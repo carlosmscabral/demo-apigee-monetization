@@ -1,0 +1,64 @@
+{
+		"operationConfigs": [
+			{
+				"apiSource": "viewership-data-api-mint",
+				"operations": [
+					{
+						"resource": "/free"
+					}
+				],
+				"quota": {
+					"limit": "30",
+					"interval": "1",
+					"timeUnit": "minute"
+				},
+				"attributes": [
+					{
+						"name": "multiplier",
+						"value": "0"
+					}
+				]
+			},
+			{
+				"apiSource": "viewership-data-api-mint",
+				"operations": [
+					{
+						"resource": "/tv_subscriptions"
+					}
+				],
+				"quota": {
+					"limit": "5",
+					"interval": "1",
+					"timeUnit": "minute"
+				},
+				"attributes": [
+					{
+						"name": "multiplier",
+						"value": "2"
+					}
+				]
+			},
+			{
+				"apiSource": "viewership-data-api-mint",
+				"operations": [
+					{
+						"resource": "/viewership"
+					}
+				],
+				"quota": {
+					"limit": "20",
+					"interval": "1",
+					"timeUnit": "minute"
+				},
+				"attributes": [
+					{
+						"name": "multiplier",
+						"value": "1"
+					}
+				]
+			}
+		],
+		"operationConfigType": "proxy"
+	}
+
+

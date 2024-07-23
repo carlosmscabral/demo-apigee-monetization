@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-monetization-free">
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <!-- Monetization variables -->
+  <AssignVariable>
+    <Name>response.header.X-Monetization-Success</Name>
+    <Value>false</Value>
+  </AssignVariable>
+  <Set>
+    <Headers>
+      <!-- Used for feedback  -->
+      <Header name="X-Monetization-Developer">{verifyapikey.VAK-VerifyKey.developer.email}</Header>
+      <Header name="X-Monetization-Application">{verifyapikey.VAK-VerifyKey.developer.app.name}</Header>
+      <Header name="X-Monetization-API-Product">{apiproduct.name}</Header>
+      <Header name="X-Monetization-Quota">{verifyapikey.VAK-VerifyKey.apiproduct.developer.quota.limit} per {verifyapikey.VAK-VerifyKey.apiproduct.developer.quota.interval} {verifyapikey.VAK-VerifyKey.apiproduct.developer.quota.timeunit}</Header>
+      <Header name="X-Monetization-Enforce">{ratelimit.QU-monetization-enforce.used.count} of {ratelimit.QU-monetization-enforce.allowed.count} with {ratelimit.QU-monetization-enforce.available.count} available and {ratelimit.QU-monetization-enforce.exceed.count} exceeded</Header>
+      <Header name="X-Monetization-Count">{ratelimit.QU-monetization-count.used.count} of {ratelimit.QU-monetization-count.allowed.count} with {ratelimit.QU-monetization-count.available.count} available and {ratelimit.QU-monetization-count.exceed.count} exceeded</Header>
+    </Headers>
+  </Set>
+</AssignMessage>

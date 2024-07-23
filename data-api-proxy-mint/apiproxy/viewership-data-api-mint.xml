@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="23" name="viewership-data-api-mint">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1720623627203</CreatedAt>
+  <LastModifiedAt>1720623660056</LastModifiedAt>
+  <BasePaths>/v1/media-data</BasePaths>
+  <Policies>
+    <Policy>AM-SetBQTableName</Policy>
+    <Policy>ConvertResponse</Policy>
+    <Policy>SetQuery</Policy>
+    <Policy>AM-FreeResponse</Policy>
+    <Policy>CORS</Policy>
+    <Policy>VAK-VerifyKey</Policy>
+    <Policy>AM-RemoveAPIKey</Policy>
+    <Policy>QU-monetization-enforce</Policy>
+    <Policy>AM-monetization-free</Policy>
+    <Policy>MC-rate-plan</Policy>
+    <Policy>RF-rateplan-not-available</Policy>
+    <Policy>AM-ping-revshare</Policy>
+    <Policy>AM-monetization-charge</Policy>
+    <Policy>DC-monetization</Policy>
+    <Policy>QU-monetization-count</Policy>
+    <Policy>AM-monetization-charge-2x</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://ConvertResponse.js</Resource>
+    <Resource>jsc://SetQuery.js</Resource>
+  </Resources>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

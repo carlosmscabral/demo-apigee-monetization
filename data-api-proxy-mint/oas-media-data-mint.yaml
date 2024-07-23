@@ -1,0 +1,44 @@
+openapi: 3.0.1
+info:
+  title: Monetized - Viewership & Subscription
+  version: '1.0'  
+servers:
+  - url: https://dev.35.227.240.213.nip.io/v1/media-data
+    description: Public Development Host
+paths:
+  /viewership:
+    get:
+      summary: GET Viewership (all data - SELECT *)
+      description: Retrieve viewership data (all records).
+      operationId: getViewership
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - api_key: []
+  /tv_subscriptions:
+    get:
+      summary: GET tv_subscription (all data - SELECT *)
+      description: Retrieve TV subscription data (all records).
+      operationId: getTVSubscriptions
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - api_key: []
+  /free:
+    get:
+      summary: GET /free
+      description: Access free media data.
+      operationId: getFree
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-apikey
+      in: header

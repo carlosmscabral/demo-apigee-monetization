@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "42969deb-389f-4ea0-9601-e251525c3403",
+		"name": "Media Data (Apigee for BQ) Demo Monetization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "805608"
+	},
+	"item": [
+		{
+			"name": "GET Viewership (all data - SELECT *)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apikey",
+						"value": "lWSakkcBPKRejFb0ap7ebxuADWsDAdJrFdjTwgPC7v2ch75Z",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{public_dev_host}}/v1/media-data/viewership",
+					"protocol": "https",
+					"host": [
+						"{{public_dev_host}}"
+					],
+					"path": [
+						"v1",
+						"media-data",
+						"viewership"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET tv_subscription (all data - SELECT *)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apikey",
+						"value": "lWSakkcBPKRejFb0ap7ebxuADWsDAdJrFdjTwgPC7v2ch75Z",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{public_dev_host}}/v1/media-data/tv_subscriptions",
+					"protocol": "https",
+					"host": [
+						"{{public_dev_host}}"
+					],
+					"path": [
+						"v1",
+						"media-data",
+						"tv_subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /free",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apikey",
+						"value": "lWSakkcBPKRejFb0ap7ebxuADWsDAdJrFdjTwgPC7v2ch75Z",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{public_dev_host}}/v1/media-data/free",
+					"protocol": "https",
+					"host": [
+						"{{public_dev_host}}"
+					],
+					"path": [
+						"v1",
+						"media-data",
+						"free"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

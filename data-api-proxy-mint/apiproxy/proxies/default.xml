@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>CORS</Name>
+      </Step>
+      <Step>
+        <Name>VAK-VerifyKey</Name>
+      </Step>
+      <Step>
+        <Name>AM-RemoveAPIKey</Name>
+      </Step>
+      <Step>
+        <Name>QU-monetization-enforce</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="GET /viewership">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SetBQTableName</Name>
+        </Step>
+        <Step>
+          <Name>MC-rate-plan</Name>
+        </Step>
+        <Step>
+          <Name>RF-rateplan-not-available</Name>
+          <Condition>mint.mintng_is_apiproduct_monetized = false</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-ping-revshare</Name>
+        </Step>
+        <Step>
+          <Name>AM-monetization-charge</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/viewership") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="GET /tv_subscriptions">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SetBQTableName</Name>
+        </Step>
+        <Step>
+          <Name>MC-rate-plan</Name>
+        </Step>
+        <Step>
+          <Name>RF-rateplan-not-available</Name>
+          <Condition>mint.mintng_is_apiproduct_monetized = false</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-ping-revshare</Name>
+        </Step>
+        <Step>
+          <Name>AM-monetization-charge-2x</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/tv_subscriptions") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="GET /free">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-FreeResponse</Name>
+        </Step>
+        <Step>
+          <Name>AM-monetization-free</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/free") and (request.verb = "GET")</Condition>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>DC-monetization</Name>
+      </Step>
+      <Step>
+        <Name>QU-monetization-count</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/media-data</BasePath>
+  </HTTPProxyConnection>
+  <RouteRule name="free-no-route">
+    <Condition>(proxy.pathsuffix MatchesPath "/free") and (request.verb = "GET")</Condition>
+  </RouteRule>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
